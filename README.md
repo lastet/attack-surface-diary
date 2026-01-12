@@ -186,85 +186,6 @@ One of the key aspects of this lab is **comparison**.
 
 📎 All comparison screenshots are included and labeled with a `c` suffix for clarity.
 
----
-
-## 📁 Repository Structure
-
-```text
-attack-surface-diary/
-├── app.py               # Flask application
-├── analyzer.py          # Log analysis logic
-├── requirements.txt
-├── templates/
-│   ├── index.html       # Upload page
-│   └── report.html      # Analysis report
-├── static/
-│   └── plots/           # Generated charts
-└── uploads/             # Uploaded CSV files
-
-
-This helps distinguish:
-- credential spraying
-- focused brute-force attempts
-
-### 2. Attempts Over Time
-- Authentication attempts aggregated per minute
-- Clearly shows:
-- attack bursts
-- discovery timing
-- drop-offs after VM shutdown or blocking
-
-### 3. EventID Breakdown
-- Top Windows Security Event IDs
-- Highlights dominant authentication-related events
-- Useful for SOC-style triage
-
-### 4. Top Targeted Usernames
-- Most frequently targeted account names
-- Includes:
-- `administrator`
-- `admin`
-- `test`
-- service-style accounts
-- Rendered as:
-- bar chart
-- sortable table
-
----
-
-## 🔬 Comparative Analysis (Weak vs Strong Credentials)
-
-One of the key aspects of this lab is **comparison**.
-
-### Weak Credentials VM
-- Extremely high volume of authentication attempts
-- Massive username enumeration
-- Clear credential spraying behavior
-- High spray scores from a small set of IPs
-
-### Strong Credentials VM (Control)
-- Significantly fewer attempts
-- Much lower username diversity
-- No signs of successful authentication
-- Attackers disengage faster
-
-📎 All comparison screenshots are included and labeled with a `c` suffix for clarity.
-
----
-
-## 📁 Repository Structure
-
-```text
-attack-surface-diary/
-├── app.py               # Flask application
-├── analyzer.py          # Log analysis logic
-├── requirements.txt
-├── templates/
-│   ├── index.html       # Upload page
-│   └── report.html      # Analysis report
-├── static/
-│   └── plots/           # Generated charts
-└── uploads/             # Uploaded CSV files
 
 🚀 How to Run Locally
 
@@ -297,3 +218,5 @@ Exportable reports (PDF / CSV summaries)
 ✨ Final Note
 This project is intentionally simple in tooling and rich in signal.
 It focuses on what attackers actually do, not just what tools claim they do.
+
+
