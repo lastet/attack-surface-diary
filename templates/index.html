@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attack Surface Diary</title>
+</head>
+<body>
+
+<h1>Attack Surface Diary</h1>
+<p>Upload authentication log (CSV)</p>
+
+<form method="POST" action="/upload" enctype="multipart/form-data">
+    <input type="file" name="logfile" required>
+    <br><br>
+    <button type="submit">Upload</button>
+</form>
+
+</body>
+</html>

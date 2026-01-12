@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Uploaded data
+uploads/
+
+# Generated plots
+static/plots/
+
+# Virtual env
+venv/
+.env

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Analysis Report</title>
+</head>
+<body>
+
+  <h1>Analysis Report</h1>
+
+  {% if filename %}
+    <p><strong>File:</strong> {{ filename }}</p>
+  {% endif %}
+
+  <ul>
+    <li><strong>Total events:</strong> {{ analysis.total_events }}</li>
+    <li><strong>Unique IPs:</strong> {{ analysis.unique_ips }}</li>
+    <li><strong>Unique usernames:</strong> {{ analysis.unique_users }}</li>
+  </ul>
+
+  <h2>Detected columns (used)</h2>
+  <ul>
+    <li><strong>IP column:</strong> {{ analysis.ip_col }}</li>
+    <li><strong>User column:</strong> {{ analysis.user_col }}</li>
+    <li><strong>Time column:</strong> {{ analysis.time_col }}</li>
+  </ul>
+
+  <!-- =========================
+       Top IPs (Chart + Table)
+       ========================= -->
+  {% if analysis.plot_file %}
+    <h2>Top IPs (Attempts)</h2>
+    <img src="{{ url_for('static', filename=analysis.plot_file) }}"
+         alt="Top IPs by attempts"
+         style="max-width: 900px;">
+  {% endif %}
+
+  {% if analysis.top_ips and analysis.top_ips|length > 0 %}
+    <h2>Top IPs table</h2>
+    <table border="1" cellpadding="6" cellspacing="0">
+      <tr>
+        <th>IP</th>
+        <th>Attempts</th>
+        <th>Unique usernames</th>
+        <th>Spray score</th>
+      </tr>
+      {% for row in analysis.top_ips %}
+      <tr>
+        <td>{{ row.ip }}</td>
+        <td>{{ row.attempts }}</td>
+        <td>{{ row.unique_usernames }}</td>
+        <td>{{ row.spray_score }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+
+  <!-- =========================
+       Attempts over time
+       ========================= -->
+  {% if analysis.time_plot_file %}
+    <h2>Attempts over Time</h2>
+    <img src="{{ url_for('static', filename=analysis.time_plot_file) }}"
+         alt="Attempts over time"
+         style="max-width: 900px;">
+  {% endif %}
+
+  <!-- =========================
+       EventID Breakdown
+       ========================= -->
+  {% if analysis.eventid_plot_file %}
+    <h2>EventID Breakdown</h2>
+    <img src="{{ url_for('static', filename=analysis.eventid_plot_file) }}"
+         alt="EventID breakdown"
+         style="max-width: 900px;">
+  {% endif %}
+
+  <!-- =========================
+       Top Targeted Usernames
+       ========================= -->
+  {% if analysis.user_plot_file %}
+    <h2>Top Targeted Usernames</h2>
+    <img src="{{ url_for('static', filename=analysis.user_plot_file) }}"
+         alt="Top targeted usernames"
+         style="max-width: 900px;">
+  {% endif %}
+
+  {% if analysis.top_users and analysis.top_users|length > 0 %}
+    <h2>Top Usernames table</h2>
+    <table border="1" cellpadding="6" cellspacing="0">
+      <tr>
+        <th>Username</th>
+        <th>Attempts</th>
+      </tr>
+      {% for row in analysis.top_users %}
+      <tr>
+        <td>{{ row.username }}</td>
+        <td>{{ row.attempts }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+
+  <p style="margin-top: 24px;">
+    <a href="{{ url_for('index') }}">Upload another file</a>
+  </p>
+
+</body>
+</html>
