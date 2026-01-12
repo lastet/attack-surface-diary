@@ -131,11 +131,17 @@ Upload a CSV log file and view the analysis report.
 This lab demonstrates:
 
 Real-world attack behavior (not synthetic data)
+
 Practical log analysis skills
+
 Ability to design controlled experiments
+
 Understanding of credential-based attack techniques
+
 Clear, visual security reporting
+
 It reflects the kind of exploratory, investigative work performed in SOC, cloud security, and blue team roles.
+
 
 📌 Future Improvements 
 
