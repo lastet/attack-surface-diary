@@ -24,6 +24,8 @@ To explore this, I deployed **two Windows virtual machines in Azure**:
   - All ports open with Any-Any rules, fw off
 
 Both VMs were exposed long enough to collect meaningful authentication logs.
+Raw authentication logs were collected from Azure-deployed Windows VMs and analyzed locally.
+Log files are intentionally excluded from the repository for security and privacy reasons.
 
 ---
 
