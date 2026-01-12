@@ -140,12 +140,75 @@ It reflects the kind of exploratory, investigative work performed in SOC, cloud 
 📌 Future Improvements 
 
 GeoIP enrichment
+
 Detection heuristics (credential spray alerts)
+
 Comparison dashboards (weak vs strong side-by-side)
+
 Exportable reports (PDF / CSV summaries)
 
 ✨ Final Note
 This project is intentionally simple in tooling and rich in signal.
 It focuses on what attackers actually do, not just what tools claim they do.
+
+
+
+## 📁 Repository Structure
+
+```text
+attack-surface-diary/
+│
+├── analyzer.py
+│   Core analysis logic.
+│   Parses authentication logs, detects relevant columns,
+│   computes metrics (spray score, unique usernames, attempts),
+│   and generates plots and tables.
+│
+├── app.py
+│   Flask application entry point.
+│   Handles file uploads, triggers analysis,
+│   and renders the final report.
+│
+├── requirements.txt
+│   Python dependencies required to run the project.
+│
+├── templates/
+│   ├── index.html
+│   │   Upload page for CSV log files.
+│   │
+│   └── report.html
+│       Rendered analysis report including
+│       charts, tables, and summary statistics.
+│
+├── static/
+│   Auto-generated visualizations (plots) served by Flask.
+│   Images are created dynamically during analysis.
+│
+├── uploads/
+│   Temporary storage for uploaded CSV log files.
+│   (Excluded from version control in real use.)
+│
+├── screenshots/
+│   Screenshots documenting the experiment and results:
+│
+│   ├── metrics*.png
+│   │   Analysis results from the weak-credentials VM.
+│
+│   ├── metrics*c.png
+│   │   Control results from the strong-credentials VM
+│   │   (suffix `c` = control).
+│
+│   ├── tool.png
+│   │   Example of the analysis report UI.
+│
+│   └── tool_and_setup.png
+│       Overview of lab setup and tool execution.
+│
+├── README.md
+│   Project documentation and experiment description.
+│
+└── .gitignore
+    Excludes log files, uploads, and other sensitive or
+    non-essential artifacts.
 
 
